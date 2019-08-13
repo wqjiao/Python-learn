@@ -327,11 +327,12 @@ for x in range(1, 101):
 print(sum)
 ```
 
-嵌套的循环结构 -- 乘法表
+嵌套的循环结构 -- 九九乘法表
 ```Python
 for i in range(1, 10):
     for j in range(1, i + 1):
         print('%d*%d=%d' % (i, j, i * j), end='\t')
+        # print('{}x{}={}\t'.format(i, j, i*j), end='') # format() 格式化函数
     print()
 ```
 
@@ -385,3 +386,9 @@ from math import sqrt
 
 [安装参考网站](https://blog.csdn.net/jiachang98/article/details/81867556)
 [pygame 下载网站](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame)
+
+* 报错提示
+    - 1.`pylint Module 'pygame' has no 'init' member`
+    <img src="./assets/pyname-01.png" />
+    
+    在 `vscode` 编辑器的 `settings.json` 文件中添加 `"python.linting.pylintArgs": [ "----extension-pkg-whitelist=1xml" ],` 配置
