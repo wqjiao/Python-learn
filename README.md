@@ -12,6 +12,18 @@
 
 方便执行代码
 
+```
+<!-- 进入 python 环境 -->
+>python
+>>
+
+<!-- 执行 index.py 文件 -->
+python index.py
+
+<!-- 退出 python 环境 -->
+exit()
+```
+
 ## API
 
 ### print() 打印输出函数
@@ -375,11 +387,89 @@ if __name__ == '__main__':
     main()
 ```
 
+### 定义类 -- 定义、创建和使用对象
+
+```Python
+# 类中定义方法接收到的第一个参数指向该类的 self
+class Student(object):
+
+    # __init__是一个特殊方法用于在创建对象时进行初始化操作
+    # 通过这个方法我们可以为学生对象绑定name和age两个属性
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def study(self, course_name):
+        print('%s正在学习%s.' % (self.name, course_name))
+
+    # PEP 8要求标识符的名字用全小写多个单词用下划线连接
+    # 但是部分程序员和公司更倾向于使用驼峰命名法(驼峰标识)
+    def watch_movie(self):
+        if self.age < 18:
+            print('%s只能观看《熊出没》.' % self.name)
+        else:
+            print('%s正在观看岛国爱情大电影.' % self.name)
+
+def main():
+    # 创建学生对象并指定姓名和年龄
+    stu1 = Student('骆昊', 38)
+    # 给对象发study消息
+    stu1.study('Python程序设计')
+
+if __name__ == '__main__':
+    main()
+```
+
+### 装饰器
+
+* `@property` -- 访问器 - getter方法
+* `@age.setter` -- 修改器 - setter方法
+* `@staticmethod` 静态方法
+* `@classmethod` 类方法
+
 ### 引入模块
 
 ```Python
 import random
 from math import sqrt
+```
+
+### 清屏
+
+```Python
+import os
+
+os.system('clear')
+```
+
+### 用户手动输入值
+
+```Python
+input('请输入该参数：')
+```
+
+## 打开/读取/关闭 文件
+
+| 操作模式 | 具体含义                         |
+| -------- | -------------------------------- |
+| `'r'`    | 读取 （默认）                    |
+| `'w'`    | 写入（会先截断之前的内容）       |
+| `'x'`    | 写入，如果文件已经存在会产生异常 |
+| `'a'`    | 追加，将内容写入到已有文件的末尾 |
+| `'b'`    | 二进制模式                       |
+| `'t'`    | 文本模式（默认）                 |
+| `'+'`    | 更新（既可以读又可以写）         |
+
+```python
+def main():
+    # 打开文件 encoding -> 文件编码方式
+    f = open('致橡树.txt', 'r', encoding='utf-8')
+    print(f.read())
+    f.close()
+
+
+if __name__ == '__main__':
+    main()
 ```
 
 ## pygame
